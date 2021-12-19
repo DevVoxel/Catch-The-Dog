@@ -1,0 +1,113 @@
+/* CSS Document */
+
+html, body {
+
+	margin: 0 auto;
+	font-family: sans-serif;
+	font-size: 18px;
+	background-image: url(../img/dogbonebg.jpg);
+}
+
+h1 {
+	margin: 2px;
+	color: #5f0a0a;
+	font-family: 'Architects Daughter', cursive;
+	font-size: 50px;
+	text-shadow: 3px 3px white;
+}
+
+h3 {
+	margin: 2px;
+	color: #5f0a0a;
+	font-family: 'Architects Daughter', cursive;
+	text-shadow: 1px 1px white;
+
+}
+
+h5 {
+	margin: 2px;
+	color: #5f0a0a;
+	font-family: 'Architects Daughter', cursive;
+	text-shadow: 1px 1px white;
+}
+
+p {
+	color: #5f0a0a;
+}
+
+button {
+	font-size: 12px;
+	font-weight: bold;
+	padding: 8px; }
+
+div#content {
+    width: 700px;
+    margin:0 auto;
+	padding: 20px;
+	background-color: #eab0b3; }
+
+div#controls {
+	text-align: right; }
+
+div#controls span {
+	font-weight: bold;
+	color: #5f0a0a;
+	text-shadow: 1px 1px white;
+}
+
+div#controls button {
+	margin-left: 20px; }
+
+
+div#gamespace {
+	margin: 20px;
+	padding: 10px;
+	height: 350px;
+	background-color: #FFF;
+	border: 2px solid #333333;
+	/* Could not get the images I was downloading for the cursor to work in the local directory so I used a link. */
+	cursor: url(https://cdn.custom-cursor.com/db/4761/32/arrow2714.png), auto;
+	position: relative;
+}
+
+.gameimage, .showimg {
+	width: 15%;
+}
+
+#start_button:hover {
+	color: #00ff4c;
+	background-color: #a8a8a8;
+}
+
+.img1 {
+	width: 100px;
+	float: left;
+	margin: 20px;
+}
+
+#timer {
+	color: #5f0a0a;
+	text-shadow: 1px 1px white;
+	display: none;
+	font-weight: bold;
+}
+
+div#gamespace img {
+	position: absolute;
+}
+
+#custom-handle {
+	width: 2em;
+	height: 1.4em;
+	top: 50%;
+	margin-top: -.8em;
+	text-align: center;
+	line-height: 1.6em;
+}
+
+#adj {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px 10px;
+}
