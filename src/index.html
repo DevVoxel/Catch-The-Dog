@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Catch a puppy (CSCI2447)</title>
+    <title>Catch a puppy</title>
 	<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
-    <!-- CSS styles: This is for me to worry about; not you. -->
 	<link href="css/game.css" rel="stylesheet" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,93 +21,59 @@
 		let p;
 		let unique = 0;
 		$(document).ready(function() {
-			// Set custom style to the start button
 			$('#start_button').css({"width" : "70px", "height" : "50px", "font-size" : "18px", "background-color": " #ff41a0 ", "color" : "white"});
-			// Prompt user for their name and set that as the firstname variable
 			firstName = prompt ("What is your first name? ");
-			// Input some html under the intro to show user's name
 			$('#user').append("Are you ready to catch the puppy " + firstName + "?");
-			// Start button event listener.  Waiting for user to click the button to carry out the function
 			$('#start_button').on('click', function(){
-				// Launches these functions once clicked
 				reset();
 				beginGame();
-				// Turns off the capability to click the start button while the game is in progress
 				$('#start_button').off();
 			});
-			// Used to check when a user clicks on an image within the gamespace
 			$('#gamespace').on('click', 'img', function() {
-				// Runs the increment function to increase the score for each image clicked
 				increment();
-				// Hides the image clicked so it cannot be clicked again
 				$(this).hide();
 			});
 		});
-		// Function used to reset base values when the game is restarted
 		function reset() {
 			timer = 30;
 			baseScore = 0;
 			unique = 0;
 		}
-		// Function used to gather the random x position for images
 		function posX() {
-			// Creates a variable named x and assigns a random value up to 540 to it
 			let x = Math.floor((Math.random()*540)+1);
 			return x;
 		}
-		// Function used to gather the random y position for images
 		function posY() {
-			// Creates a variable named y and assigns a random value up to 250 to it
 			let y = Math.floor((Math.random()*250)+1);
 			return y;
 		}
-		// Function used to generate a random interval (Max of 2 seconds)
 		function randInterval() {
-			// Creates a variable named r and assigns a random value up to 2000 to it
 			let r = Math.floor((Math.random()*2000)+1);
 			return r;
 		}
-		// Function used to generate a random interval (Used for the fading out of the images)
 		function randWhole() {
-			// Creates a variable named r2 and assigns a random value up to it
 			let r2 = Math.floor((Math.random()*2000)+700);
 			return r2;
 		}
-		// Function used to start the game
 		function beginGame() {
-			// Controls the timer and ending of the game
 			decrement();
-			// Controls the random addition of the images
 			addImage();
-			// Cotrols the random removal of the images
 			remImage();
-			// Used to show the user the base score of 0 (Useful for when game is reset. Score will reset with it)
 			$("#score").html((baseScore) + " pts");
-			// Displays the timer
 			$('#timer').css("display", "inline");
-			// Hides the difficulty slider to prevent changing mid game
 			$('#slider').hide();
 		}
-		// Used to control the timer and the ending of the game
 		function decrement() {
-			// Tests to see if the timer has reached 0 or not
 			if (timer >= 0) {
-				// While the timer is above 0 it will continue to update the html to show the user how much time they have left
 				$('#timer').html(timer + " seconds left");
-				// Reduces the timer by 1 (Does this every second with setTimeout()
 				timer-=1;
 				t = setTimeout("decrement()", 1000);
-				// If the time does reach 0
 			} else {
-				// Alert the user that the game is over and show them their score
 				alert("Game Over. You got " + baseScore + " points.");
-				clearTimeout(t); // Stops timer from continuing past 0.
-				clearTimeout(i); // This will stop the adding of the images when the game hits 0.
-				// Clears the gamespace of images just in case there are some leftover
+				clearTimeout(t);
+				clearTimeout(i);
 				$('#gamespace').empty();
-				// Brings back the slider in case the user wants to change the difficulty
 				$('#slider').show();
-				// Reactivates the listener on the start button to restart the game
 				$('#start_button').on('click', function(){
 					reset();
 					beginGame();
@@ -116,31 +81,20 @@
 				});
 			}
 		}
-		// Controls the score of the game
 		function increment() {
-			// Updates the html on the page to show the user their score as well as updates the baseScore variable
 			$("#score").html((++baseScore) + " pts");
 		}
-		// Controls the adding of the images in the game
 		function addImage() {
-			// Grab random x and y positions
 			let xPos = posX();
 			let yPos = posY();
-			// Add image to the gamespace with unique ids
 			$('#gamespace').append('<img src="img/puppy.png" class="gameimage" id="doggo' + unique + '"style="left:'+ xPos +'px; top: '+ yPos +'px;"/>');
-			// This will adjust the images if the slider is used
 			$('.gameimage').css('width', extra + '%');
 			unique++;
-			// Sets the images to appear at a random interval using the randInterval() function
 			i = setTimeout("addImage()", randInterval());
 		}
-		// Used to control the removing of images
 		function remImage() {
-			// Set variable equal to id of images that are displayed
 			let uniId = unique - 1;
-			// Select each image to fadeOut() randomly
 			$('#doggo' + uniId).fadeOut(randWhole());
-			// Consistently update to check for new images
 			p = setTimeout("remImage()", 1);
 		}
 	</script>
