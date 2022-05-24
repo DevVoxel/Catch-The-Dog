@@ -1,0 +1,26 @@
+{
+  "name": "catch-the-dog",
+  "version": "1.0.0",
+  "description": "Whack a Mole variant built in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Voxel20/Catch-The-Dog.git"
+  },
+  "keywords": [
+    "javascript",
+    "css",
+    "html",
+    "jquery",
+    "jqueryUI"
+  ],
+  "author": "Aiden Smith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Voxel20/Catch-The-Dog/issues"
+  },
+  "homepage": "https://github.com/Voxel20/Catch-The-Dog#readme"
+}
